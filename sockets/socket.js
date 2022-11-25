@@ -13,7 +13,8 @@ io.on('connection', client => {
 
     });
     client.on('Emitir-mensaje',(payload)=>{
-        io.emit('Emitir-mensaje', 'hola que hace');
+       // io.emit('Nuevo-mensaje', payload); //emite a todos
+       client.broadcast.emit('Nuevo-mensaje', payload); //emite a todos menos a el que lo emitio
 
     });
   });
