@@ -1,4 +1,5 @@
 const {io} = require('../index');
+
 //mensajes de sockets
 io.on('connection', client => {
     console.log('Cliente conectado');
@@ -13,6 +14,7 @@ io.on('connection', client => {
 
     });
     client.on('Emitir-mensaje',(payload)=>{
+        //console.log(payload);
        // io.emit('Nuevo-mensaje', payload); //emite a todos
        client.broadcast.emit('Nuevo-mensaje', payload); //emite a todos menos a el que lo emitio
 
