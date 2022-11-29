@@ -27,6 +27,20 @@ io.on('connection', client => {
         io.emit('active-bands', bands.getBands());
 
     });
+    client.on('add-band', (payload)=>{
+        const newBand = new Band(payload.name);
+        bands.addBand(newBand);
+        io.emit('active-bands', bands.getBands());
+        
+
+    });
+    client.on('delete-band', (payload)=>{
+        
+        bands.deleteBand(payload.id)
+        io.emit('delete-band', bands.getBands());
+        
+
+    });
 
     //client.on('Emitir-mensaje',(payload)=>{
         //console.log(payload);
